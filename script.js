@@ -1,9 +1,10 @@
 const wordList = ["dog", "bear", "horse", "elephant"];
 let figureList = ["ground", "scaffold", "head", "body", "arms", "legs"];
 let figureCounter = 0;
-let secretWord, selectedWord
+let secretWord, selectedWord;
 let wordDisplay = document.getElementById('guess-container__correct');
-let reset = (figureCounter = 0);
+let vol = document.getElementById("sound-bg")
+vol.volume = 0.2
 
 // randomize a word from secretWords-array
 const randomizedWord = () => {
@@ -21,7 +22,7 @@ randomizedWord()
 hideWord();
 
 // checks if the entered value is valid.
-const compareByInput = () => {
+  const compareByInput = () => {
   let guessInput = document.getElementsByClassName('input-container__text')[0];
   let guessLetter = guessInput.value;
   if (!guessLetter.match(/[a-z]/)) {
@@ -34,6 +35,9 @@ const compareByInput = () => {
     if (selectedWord[i] === guessLetter) {
       secretWord[i] = guessLetter;
       guessInput.value = '';
+
+      const successSound = document.getElementById("sound-correct");
+      successSound.play();
     }
   }
 
@@ -44,6 +48,8 @@ const compareByInput = () => {
     document.getElementsByClassName('guess-container__incorrect')[0].innerHTML += guessLetter;
     figureCounter++;
     guessInput.value = "";
+    const badSound = document.getElementById("sound-wrong");
+    badSound.play();
   }
 
   // Gives a endgame popup, loose or win.
@@ -59,4 +65,15 @@ const compareByInput = () => {
        gameEnd();
      }, 1250);
 }
-        
+
+// Bg-sound function and eventlistner to make autoplay work
+document.addEventListener('click', musicPlay);
+const musicPlay = () => {
+    document.getElementById('intro').play();
+    document.removeEventListener('click', musicPlay);
+}
+
+const playSound = () => {
+    const audio = document.getElementById("game-sound");
+    audio.play();
+}
