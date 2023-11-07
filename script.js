@@ -40,12 +40,8 @@ const compareByInput = () => {
   // Removes the faded filter on classes when the guess is correct.
   wordDisplay.textContent = secretWord.join(' ');
   if (selectedWord.includes(guessLetter) == false) {
-    document
-      .getElementById(figureList[figureCounter])
-      .classList.remove('faded');
-    document.getElementsByClassName(
-      'guess-container__incorrect'
-    )[0].innerHTML += guessLetter;
+    document.getElementById(figureList[figureCounter]).classList.remove('faded');
+    document.getElementsByClassName('guess-container__incorrect')[0].innerHTML += guessLetter;
     figureCounter++;
     guessInput.value = "";
   }
