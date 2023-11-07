@@ -24,10 +24,10 @@ body {
     display: none;
 }
 
-.wrongguess__text {
+.guess-container__incorrect {
     letter-spacing: .5rem;
 }
 
-.guessbox__input {
-    text-transform: lowercase;
+.input-container__text, .guess-container__incorrect, .guess-container {
+    text-transform: uppercase;
 }

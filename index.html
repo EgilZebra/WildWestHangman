@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-
 <body>
     <h1 class="headline">Hangman!</h1>
+    <!-- The hanged man figure, all pieces should be individual elements. -->
     <figure class="hangedman">
         <svg width="501" height="565" viewBox="0 0 501 565" fill="none" xmlns="http://www.w3.org/2000/svg">
             <ellipse id="ground" class="faded" cx="250.5" cy="536" rx="250.5" ry="29" fill="black"
@@ -29,26 +29,23 @@
             <path id="body" class="faded"
                 d="M361.5 168V172M361.659 287C369.486 287 375.743 280.491 375.434 272.67L371.766 179.737C371.573 174.857 367.561 171 362.677 171C357.87 171 353.893 174.74 353.599 179.538L347.898 272.369C347.411 280.3 353.712 287 361.659 287Z"
                 stroke="black" stroke-width="3" />
-
         </svg>
-        <!-- The hanged man figure, all pieces should be individual elements. -->
     </figure>
-    <div class="guessword">
-        <!-- The word we have to guess. -->
-        <h2 id="guessWord"></h2>
+
+    <div class="guess-container">
+        <!-- The letters we have guessed correct. -->
+        <div id="guess-container__correct"></div>
     </div>
-    <div class="wrongguess">
-        <!-- the letters we have guessed that was wrong. -->
-        <h2 class="wrongguess__text"></h2>
+    <div class="guess-container">
+        <!-- The letters we have guessed wrong. -->
+        <div class="guess-container__incorrect"></div>
     </div>
-    <div class="guessbox">
+    <div class="input-container">
         <!-- Type the letter that you want to guess. -->
-        <input type="text" class="guessbox__input" maxlength="1" required>
+        <input type="text" class="input-container__text" maxlength="1" required>
         <!-- Run the function when you press this button. -->
-        <button class="guessbox__button" onclick=(compareByInput())>Guess!</button>
+        <button class="input-container__btn" onclick=(compareByInput())>Guess!</button>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
-<!-- pattern="[a-zA-Z]+" -->
