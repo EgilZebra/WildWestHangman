@@ -3,7 +3,7 @@ const attempts = 8;
 //declaring multiple variables in one line
 let secretWord, selectedWord, remainingAttempts, wrongGuess
 
-const wordDisplay = document.getElementById("guessWord");
+let wordDisplay = document.getElementById("guessWord");
 //console.log(wordDisplay)
 
 
@@ -29,6 +29,10 @@ const compareInput = () => {
     for ( let i = 0; i < selectedWord.length; i++) {
     if (selectedWord.includes(document.getElementsByClassName("guessbox__input")[0].value, i)) { 
         console.log(`Ja, det funkar!`)
+        let guessletter = document.getElementsByClassName("guessbox__input")[0].value;
+        secretWord.splice(i, 1, guessletter);
+        console.log(guessletter)
+        guessWord.textContent = secretWord.join(" ");
     } else {
         console.log(`Det funkar inte`)
     }
