@@ -1,5 +1,7 @@
-const wordList = ["dog", "bear", "horse"];
-const attempts = 8; 
+const wordList = ["dog", "bear", "horse", "elephant"];
+let figureList = ["ground", "scaffold", "head", "body", "arms", "legs"];
+const attempts = 6; 
+
 //declaring multiple variables in one line
 let secretWord, selectedWord, remainingAttempts, wrongGuess
 
@@ -25,48 +27,51 @@ console.log(randomizedWord())
 console.log(hideWord());
 
 
-const compareInput = () => {
-    for ( let i = 0; i < selectedWord.length; i++) {
-    if (selectedWord.includes(document.getElementsByClassName("guessbox__input")[0].value, i)) { 
-        console.log(`Ja, det funkar!`)
-        let guessletter = document.getElementsByClassName("guessbox__input")[0].value;
-        secretWord.splice(i, 1, guessletter);
-        console.log(guessletter)
-        guessWord.textContent = secretWord.join(" ");
-    } else {
-        console.log(`Det funkar inte`)
-    }
-}
-
-}
-
-/* 
-secretWord = Array(selectedWord.length).fill("_");
-
-    //
-    guessWord.textContent = secretWord.join(" ");
- */
-
-/* function impliedLength () {
-     guessWord.textContent = secretWord.join(" ");
-
-} */
-
-
-//shows the number of underscores needed for secretWord
-
-
-//Create function for comparing correct input with several if/else statements - to change the `_`
-/* function userInput (){
-    if (secretWord ==  )
-} */
-
 // 
+let figureCounter = 0;
+const compareByInput = () => {
+    let guessInput = document.getElementsByClassName("guessbox__input")[0];
 
+  
+    let guessLetter = guessInput.value; 
+    if (!guessLetter.match(/[a-z]/)) {
+        alert("Only letters (a-z) is allowed");
+        return null;
+    }
 
-//
+    for (let i = 0; i < selectedWord.length; i++) {
+        if (selectedWord[i] === guessLetter) {
+            secretWord[i] = guessLetter;
+            console.log(`Jajjebulle`)
+        }
+    }
+    
+    guessWord.textContent = secretWord.join(" ");
+    if (selectedWord.includes(guessLetter) == false) {
+          
+        document.getElementById(figureList[figureCounter]).classList.remove("faded"); 
 
-/* 
+        document.getElementsByClassName("wrongguess__text")[0].innerHTML += guessLetter;
 
-console.log(selectedWord)
- */
+        figureCounter++
+    }  
+   if (figureCounter == 6) {
+            alert(`You lost! The right word was ${selectedWord} Do you want to try again?`)
+            figureCounter = 0;
+        } 
+       
+       setTimeout(() => {
+            winner()
+        }, 1250)
+           /* console.log(secretWord.join("").toString(), selectedWord) */
+        
+    }
+    
+
+    function winner() {
+        
+        if (secretWord.join("").toString() == selectedWord) {
+            alert(`The correct word was: ${secretWord.join("").toString()} You won!`)
+           }
+        }
+        

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 body {
@@ -17,4 +18,16 @@ body {
     border: solid black;
     width: 100%;
     height: 40rem;
+}
+
+.faded {
+    display: none;
+}
+
+.wrongguess__text {
+    letter-spacing: .5rem;
+}
+
+.guessbox__input {
+    text-transform: lowercase;
 }
