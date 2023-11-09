@@ -8,7 +8,6 @@ let wordDisplay = document.getElementById('guess-container__correct');
 let vol = document.getElementById("sound-bg")
 let musicIsPlaying = false;
 
-
 vol.volume = 0.1
 const musicPlay = () => {
     if (!musicIsPlaying) {
