@@ -56,6 +56,7 @@ hideWord();
   let guessLetter = guessInput.value;
   if (!guessLetter.match(/[a-z]/)) {
     alert('Only letters (a-z) is allowed');
+    guessInput.value = "";
     return null;
   }
 
@@ -92,7 +93,7 @@ gainedScore()
     soundIncorrect.play();
   }
 
-// Gives a endgame popup, loose or win.
+  // Gives a endgame popup, loose or win.
     const gameEnd = () => {
       if (figureCounter == 6) {
         alert(`You lost! The right word was ${selectedWord} Do you want to try again?`);
@@ -105,5 +106,48 @@ gainedScore()
        gameEnd();
      }, 1250);
 }
- 
-// Bg-sound function and eventlistner to make autoplay word
+
+//Connects "Enter" to input-container__text and later runs comparison()
+const handleEnter = (event) => {
+  if (event.keyCode === 13) {
+      compareByInput()
+  }
+}
+
+// Create function to reset game (26, 48 & 49)
+
+// Is something forgotten?
+
+//VERY SENSITIVE resetGame() is very "order-sensitive" 
+const resetGame = () => { 
+  secretWord = [];
+  selectedWord = [];
+  compareByInput();
+  
+  randomizedWord();
+  hideWord();
+  figureCounter = 0;
+
+//for..of to loop through figureList-array
+for (let figure of figureList) {
+      document.getElementById(figure).classList.add("faded");
+  }
+
+  document.getElementsByClassName("guess-container__incorrect")[0].innerHTML = "";
+  
+  document.getElementsByClassName("input-container__text").value = "";
+  
+  
+}
+
+// Bg-sound function and eventlistner to make autoplay work
+document.addEventListener('click', musicPlay);
+const musicPlay = () => {
+    document.getElementById('intro').play();
+    document.removeEventListener('click', musicPlay);
+}
+
+// const playSound = () => {
+//     const audio = document.getElementById("game-sound");
+//     audio.play();
+}
