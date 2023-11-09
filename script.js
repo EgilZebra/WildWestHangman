@@ -57,9 +57,10 @@ hideWord();
   let guessInput = document.getElementsByClassName('input-container__text')[0];
   
   let guessLetter = guessInput.value;
-  if (!guessLetter.match(/[a-z]/) || guessLetter.trim() === "") {
-    alert('Only letters (a-z) is allowed');
+  if (!guessLetter.match(/[a-z]/)) {
+    
     guessInput.value = "";
+    return null;
   } 
 
   // Loops and checks if the letter is already stored
@@ -109,13 +110,11 @@ gainedScore()
         showMessage.innerHTML = message;
         tossContainer.style.display = "block";
     }
-    
 // Delay timer for the picture to display before the game ends.
      setTimeout(() => {
        gameEnd();
      }, 1250);
 }
-
 //Connects "Enter" to input-container__text and later runs comparison()
 const handleEnter = (event) => {
   if (event.keyCode === 13) {
@@ -129,18 +128,18 @@ const handleEnter = (event) => {
 
 //VERY SENSITIVE resetGame() is very "order-sensitive" 
 const resetGame = () => { 
-  secretWord = [];
-  selectedWord = [];
+  /* secretWord = [];
+  selectedWord = []; */ //behövs dessa ens??
 
  document.getElementsByClassName("input-container__text")[0].value = "";
-  
+  compareByInput(); //1 // 3
   randomizedWord(); //2
   hideWord(); //3
-  compareByInput(); //1
   
+  
+    count = 60;
   figureCounter = 0;
- 
-tossContainer.style.display = "none";
+    tossContainer.style.display = "none";
     
 //for..of to loop through figureList-array
 for (let figure of figureList) {
