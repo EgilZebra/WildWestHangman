@@ -67,7 +67,7 @@ hideWord();
   for (let i = 0; i < selectedWord.length; i++) {
     if (secretWord[i] == guessLetter) {
        guessInput.value = '';
-        alert("You have already guessed that")
+        
     } // checks if the the guessed letter is in the secret word
       else if (selectedWord[i] === guessLetter) {
       secretWord[i] = guessLetter;
@@ -139,6 +139,7 @@ const resetGame = () => {
   
     count = 60;
   figureCounter = 0;
+  
     tossContainer.style.display = "none";
     
 //for..of to loop through figureList-array
