@@ -17,21 +17,23 @@ body {
     gap: 1rem;
     margin: auto;
     width: 70%;
-    height: 100%;
+    height: auto;
     font-family: 'Rye', serif;
     font-size: 2rem;
     background-image: url(assets/wwbackground.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: min(150rem);
+    background-position: left;
 }
 
 .headline {
     background-image: url(assets/woodsign.webp);
     background-size: 26rem 6rem;
     background-position: center;
-    overflow: auto;
+    overflow: hidden;
     background-repeat: no-repeat;
     margin-top: 1rem;
+    padding: 1rem;
 }
 
 .headline__text {
@@ -51,6 +53,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 1rem;
+    height: 100%;
 }
 
 .hangedman {
@@ -79,11 +82,12 @@ body {
     display: flex;
     flex-direction: row;
     padding: 2rem;
-    margin-top: -2.3rem;
+    padding-bottom: 1.7rem;
+    margin-top: -2rem;
     gap: 1rem;
     background-image: url(assets/steelsign.png);
     background-repeat: no-repeat;
-    background-size: 27rem 7rem;
+    background-size: 34rem 7.5rem;
     overflow: visible;
     background-position: center;
 }
@@ -118,21 +122,41 @@ body {
     background-color: rgba(0, 0, 0, 0.455);
 }
 
-.sidefig--right {
+.sidefig {
     width: 10rem;
     height: 10rem;
     position: fixed;
+}
+
+.sidefig--right {
     bottom: 30rem;
     right: 5rem;
 }
 
 .sidefig--left {
-    width: 10rem;
-    height: 10rem;
-    position: fixed;
     bottom: 15rem;
     left: -10rem;
     rotate: 15deg;
+}
+
+.bottom-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+    width: 100%;
+    align-items: center;
+    background-image: url(assets/woodboard.png);
+    background-size: 35rem 8rem;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bottom-wrapper--second {
+    display: flex;
+    width: auto;
+    justify-content: center;
 }
 
 .score-container {
@@ -140,18 +164,34 @@ body {
     justify-content: space-evenly;
     align-items: center;
     justify-content: center;
-    width: 5rem;
+    width: 7rem;
     height: 2rem;
-    background-color: black;
-    color: white;
+    color: black;
 }
 
 .timer-container {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     justify-content: center;
-    width: 5rem;
+    width: 7rem;
     height: 2rem;
-    background-color: black;
-    color: white;
+    color: black;
+}
+
+#sound-bg {
+    background: none;
+}
+
+@media (max-width: 40rem) {
+    .sidefig {
+        display: none;
+    }
+    body {
+        width: 100%;
+    }
+    .mainwrapper {
+        width: 100%;
+        background-size: auto;
+    }
 }
