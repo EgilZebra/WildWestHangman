@@ -155,3 +155,21 @@ body {
     background-color: black;
     color: white;
 }
+
+#toss-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    border: solid black 2px;
+    width: 28rem;
+    height: 18rem;
+    /* z-index: 1; */
+    position: fixed;
+    margin-top: 10rem;
+    background-color: rgb(255, 218, 173);
+}
+
+#show-message {}

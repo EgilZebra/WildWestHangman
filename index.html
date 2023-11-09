@@ -23,7 +23,7 @@
     <audio id="sound-incorrect">
         <source src="./assets/wrong.mp3" type="audio/mpeg">
     </audio>
-    
+
     <div class="headline">
         <h1 class="headline__text">•HANGMAN•</h1>
     </div>
@@ -58,7 +58,10 @@
         <figure class="sidefig--left">
             <img src="assets/sheriffstar.png" alt="cactus">
         </figure>
-
+        <div id="toss-container">
+            <p id="show-message"></p>
+            <button onclick="resetGame()">Reset</button>
+        </div>
         <div class="guess-container">
             <!-- The letters we have guessed correct. -->
             <div id="guess-container__correct"></div>
@@ -72,7 +75,7 @@
     <div class="input-container">
         <!-- Type the letter that you want to guess. -->
         <button onclick="resetGame()">Reset</button>
-        <input type="text" class="input-container__text" maxlength="1" onkeydown="handleEnter(event)" required
+        <input id="hej" type="text" class="input-container__text" maxlength="1" onkeydown="handleEnter(event)" required
             autofocus>
         <!-- Run the function when you press this button. -->
         <button class="input-container__btn" onclick=(compareByInput())>Guess!</button>

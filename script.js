@@ -4,12 +4,14 @@ let secretWord, selectedWord;
 let figureCounter = 0;
 let score = 0;
 let count = 60;
+let tossContainer = document.getElementById("toss-container");
+let showMessage = document.getElementById("show-message");
 let wordDisplay = document.getElementById('guess-container__correct');
 let vol = document.getElementById("sound-bg")
 let musicIsPlaying = false;
 
 
-vol.volume = 0.1
+vol.volume = 0
 const musicPlay = () => {
     if (!musicIsPlaying) {
         const bgSound = document.getElementById('intro');
@@ -53,12 +55,12 @@ hideWord();
 // checks if the entered value is valid.
   const compareByInput = () => {
   let guessInput = document.getElementsByClassName('input-container__text')[0];
+  
   let guessLetter = guessInput.value;
-  if (!guessLetter.match(/[a-z]/)) {
+  if (!guessLetter.match(/[a-z]/) || guessLetter.trim() === "") {
     alert('Only letters (a-z) is allowed');
     guessInput.value = "";
-    return null;
-  }
+  } 
 
   // Loops and checks if the letter is already stored
   for (let i = 0; i < selectedWord.length; i++) {
@@ -81,7 +83,6 @@ hideWord();
 }
 gainedScore()
 
-   
  wordDisplay.textContent = secretWord.join(' ');
 // Removes the faded filter on classes when the guess is correct.
   if (selectedWord.includes(guessLetter) == false) {
@@ -94,13 +95,21 @@ gainedScore()
   }
 
   // Gives a endgame popup, loose or win.
+  // Runs showToss() if condition is met
     const gameEnd = () => {
       if (figureCounter == 6) {
-        alert(`You lost! The right word was ${selectedWord} Do you want to try again?`);
+        showToss(`You lost! The right word was "${selectedWord}" Do you want to try again?`)
+
         } else if (secretWord.join('').toString() == selectedWord) {
-            alert(`The correct word was: ${secretWord.join('').toString()} You won!`);
+            showToss(`The correct word was: "${secretWord.join('').toString()}" <br/><br/> You won!`);
         }
     }
+
+    const showToss = (message) => { 
+        showMessage.innerHTML = message;
+        tossContainer.style.display = "block";
+    }
+    
 // Delay timer for the picture to display before the game ends.
      setTimeout(() => {
        gameEnd();
@@ -122,22 +131,22 @@ const handleEnter = (event) => {
 const resetGame = () => { 
   secretWord = [];
   selectedWord = [];
-  compareByInput();
-  
-  randomizedWord();
-  hideWord();
-  figureCounter = 0;
 
+ document.getElementsByClassName("input-container__text")[0].value = "";
+  
+  randomizedWord(); //2
+  hideWord(); //3
+  compareByInput(); //1
+  
+  figureCounter = 0;
+ 
+tossContainer.style.display = "none";
+    
 //for..of to loop through figureList-array
 for (let figure of figureList) {
       document.getElementById(figure).classList.add("faded");
   }
-
   document.getElementsByClassName("guess-container__incorrect")[0].innerHTML = "";
-  
-  document.getElementsByClassName("input-container__text").value = "";
-  
-  
 }
 
 // Bg-sound function and eventlistner to make autoplay work
