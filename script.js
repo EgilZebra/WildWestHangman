@@ -141,13 +141,13 @@ for (let figure of figureList) {
 }
 
 // Bg-sound function and eventlistner to make autoplay work
-document.addEventListener('click', musicPlay);
-const musicPlay = () => {
-    document.getElementById('intro').play();
-    document.removeEventListener('click', musicPlay);
-}
+// document.addEventListener('click', musicPlay);
+// const musicPlay = () => {
+//     document.getElementById('intro').play();
+//     document.removeEventListener('click', musicPlay);
+// }
 
 // const playSound = () => {
 //     const audio = document.getElementById("game-sound");
 //     audio.play();
-}
+
