@@ -4,7 +4,7 @@ let figureCounter = 0;
 let secretWord, selectedWord;
 let wordDisplay = document.getElementById('guess-container__correct');
 let vol = document.getElementById("sound-bg")
-vol.volume = 0.2
+vol.volume = 0
 
 // randomize a word from secretWords-array
 const randomizedWord = () => {
@@ -27,8 +27,10 @@ hideWord();
   let guessLetter = guessInput.value;
   if (!guessLetter.match(/[a-z]/)) {
     alert('Only letters (a-z) is allowed');
+    guessInput.value = "";
     return null;
   }
+  
 
   // checks if the the guessed letter is in the secret word
   for (let i = 0; i < selectedWord.length; i++) {
@@ -51,7 +53,7 @@ hideWord();
     const badSound = document.getElementById("sound-wrong");
     badSound.play();
   }
-
+  
   // Gives a endgame popup, loose or win.
     const gameEnd = () => {
       if (figureCounter == 6) {
@@ -65,6 +67,39 @@ hideWord();
        gameEnd();
      }, 1250);
 }
+//Connects "Enter" to input-container__text and later runs comparison()
+const handleEnter = (event) => {
+    if (event.keyCode === 13) {
+        compareByInput()
+    }
+  }
+
+// Create function to reset game (26, 48 & 49)
+
+// Is something forgotten?
+
+//VERY SENSITIVE resetGame() is very "order-sensitive" 
+const resetGame = () => { 
+    secretWord = [];
+    selectedWord = [];
+    compareByInput();
+    
+    randomizedWord();
+    hideWord();
+    figureCounter = 0;
+
+//for..of to loop through figureList-array
+for (let figure of figureList) {
+        document.getElementById(figure).classList.add("faded");
+    }
+
+    document.getElementsByClassName("guess-container__incorrect")[0].innerHTML = "";
+    
+    document.getElementsByClassName("input-container__text").value = "";
+    
+    
+}
+
 
 // Bg-sound function and eventlistner to make autoplay work
 document.addEventListener('click', musicPlay);
