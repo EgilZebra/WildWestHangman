@@ -1,4 +1,6 @@
-const wordList = ["dog", "bear", "horse", "elephant"];
+// Script code for Hang the cowboy!
+
+const wordList = ["coyote", "bear", "horse", "eagle", "navajo", "saddle", "bison", "revolver", "rodeo", "bronco ", "ranch", "desperado "];
 let figureList = ["ground", "scaffold", "head", "body", "arms", "legs"];
 let secretWord, selectedWord, setTimer
 let figureCounter = 0;
@@ -10,7 +12,8 @@ let wordDisplay = document.getElementById('guess-container__correct');
 let vol = document.getElementById("sound-bg")
 let musicIsPlaying = false;
 
-vol.volume = 0
+// Background audio
+vol.volume = 0.1; 
 const musicPlay = () => {
     if (!musicIsPlaying) {
         const bgSound = document.getElementById('intro');
@@ -34,13 +37,13 @@ document.addEventListener('click', musicPlay);
         }
     }
 
+    // popup for ending the game.
     const showToss = (message) => { 
         showMessage.innerHTML = message;
         tossContainer.style.display = "flex";
     }
 
-// timer for the game 60 sec
-
+// Timer for the game.
 const timer = () => {
 clearInterval(setTimer)
  setTimer = setInterval(function() {
@@ -50,7 +53,7 @@ clearInterval(setTimer)
   console.log(count);
   if (count == 0) {
     clearInterval(setTimer);
-    showToss()
+    showToss(`Time is up partner! <br> Try again!`)
   }
 }, 1000);
 }
@@ -63,7 +66,7 @@ const randomizedWord = () => {
 };
 randomizedWord() 
 
-// function for displaying empty letter "__", joinas på mellanrum -> till array
+// function for displaying empty letter "__", joins on blankspace -> to array
     const hideWord = () => {
     secretWord = Array(selectedWord.length).fill("_");
     wordDisplay.textContent = secretWord.join(" ");
@@ -102,8 +105,11 @@ hideWord();
 gainedScore()
 
  wordDisplay.textContent = secretWord.join(' ');
+  if (document.getElementsByClassName('guess-container__incorrect')[0].innerHTML.includes(guessLetter) == true) {
+    guessInput.value = "";
+  }
 // Removes the faded filter on classes when the guess is correct.
-  if (selectedWord.includes(guessLetter) == false) {
+  else if (selectedWord.includes(guessLetter) == false) {
     document.getElementById(figureList[figureCounter]).classList.remove('faded');
     document.getElementsByClassName('guess-container__incorrect')[0].innerHTML += guessLetter;
     figureCounter++;
@@ -111,7 +117,6 @@ gainedScore()
     const soundIncorrect = document.getElementById("sound-incorrect");
     soundIncorrect.play();
   }
-
 
 // Delay timer for the picture to display before the game ends.
      setTimeout(() => {
@@ -125,11 +130,7 @@ const handleEnter = (event) => {
   }
 }
 
-// Create function to reset game (26, 48 & 49)
-
-// Is something forgotten?
-
-//VERY SENSITIVE resetGame() is very "order-sensitive" 
+// reset the game from the beginning 
 const resetGame = () => { 
   count = 60;
   timer();
@@ -138,9 +139,9 @@ const resetGame = () => {
 
 
   document.getElementsByClassName("input-container__text")[0].value = "";
-  compareByInput(); //1 // 3
-  randomizedWord(); //2
-  hideWord(); //3
+  compareByInput(); 
+  randomizedWord(); 
+  hideWord(); 
   figureCounter = 0;
   
     tossContainer.style.display = "none";
