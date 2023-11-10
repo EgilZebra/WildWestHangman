@@ -36,7 +36,7 @@ document.addEventListener('click', musicPlay);
 
     const showToss = (message) => { 
         showMessage.innerHTML = message;
-        tossContainer.style.display = "block";
+        tossContainer.style.display = "flex";
     }
 
 // timer for the game 60 sec
