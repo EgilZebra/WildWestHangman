@@ -1,3 +1,8 @@
+/* Stylesheet for Hang the cowboy */
+/* Regions for all the stylesections */
+
+/* #region general styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -27,6 +32,8 @@ body {
     background-size: auto;
     background-position: left;
 }
+
+/* #endregion General Styles */
 
 /* #region Headline */
 
@@ -218,20 +225,37 @@ body {
 
 /* #endregion responsive mediaquery*/
 
+/* #region Endgame window */
+
 #toss-container {
     text-align: center;
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     display: none;
-
-    border: solid black 2px;
+    border: solid rgba(139, 69, 19, 0.81) 5px;
+    border-radius: 1rem;
     width: 28rem;
-    height: 18rem;
-    /* z-index: 1; */
+    height: 28rem;
     position: fixed;
-    margin-top: 10rem;
-    background-color: rgb(255, 218, 173);
+    margin-top: 5rem;
+    background-image: url(assets/wantedposter.png);
+    background-position: center;
+}
+
+.reset-img {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    padding-left: .7rem;
+}
+
+.toss-btn {
+    font-size: 1.5rem;
+    width: 7rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 #show-message {}
+
+/* #endregion Endgame window */

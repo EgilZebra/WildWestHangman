@@ -107,7 +107,7 @@ gainedScore()
 
     const showToss = (message) => { 
         showMessage.innerHTML = message;
-        tossContainer.style.display = "block";
+        tossContainer.style.display = "flex";
     }
 // Delay timer for the picture to display before the game ends.
      setTimeout(() => {
@@ -135,8 +135,6 @@ const resetGame = () => {
   randomizedWord(); //2
   hideWord(); //3
   
-   score = 0;
-  gainedScore();
     count = 60;
   figureCounter = 0;
   
@@ -149,14 +147,4 @@ for (let figure of figureList) {
   document.getElementsByClassName("guess-container__incorrect")[0].innerHTML = "";
 }
 
-// Bg-sound function and eventlistner to make autoplay work
-// document.addEventListener('click', musicPlay);
-// const musicPlay = () => {
-//     document.getElementById('intro').play();
-//     document.removeEventListener('click', musicPlay);
-// }
-
-// const playSound = () => {
-//     const audio = document.getElementById("game-sound");
-//     audio.play();
 

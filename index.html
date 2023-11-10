@@ -13,17 +13,7 @@
 </head>
 
 <body>
-    <!-- background sound when playing -->
-    <audio id="sound-bg" controls autoplay loop>
-        <source src="./assets/bg.mp3" type="audio/mp3">
-    </audio>
-    <audio id="sound-correct">
-        <source src="./assets/correct.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="sound-incorrect">
-        <source src="./assets/wrong.mp3" type="audio/mpeg">
-    </audio>
-    
+ 
     <div class="headline">
         <h1 class="headline__text">•HANGMAN•</h1>
     </div>
@@ -54,13 +44,14 @@
         <figure class="sidefig sidefig--right">
             <img src="assets/cactus.png" alt="cactus">
         </figure>
-
         <figure class="sidefig sidefig--left">
             <img src="assets/sheriffstar.png" alt="cactus">
         </figure>
+
         <div id="toss-container">
             <p id="show-message"></p>
-            <button onclick="resetGame()">Reset</button>
+            <img class="reset-img" src="https://images.vexels.com/media/users/3/276845/isolated/preview/f8a6b63b4475317c0b47cf2d4fde0275-wild-west-bull-skull-color-stroke.png" alt="skull">
+            <button class="input-container__btn toss-btn" onclick="resetGame()">Reset</button>
         </div>
         <div class="guess-container">
             <!-- The letters we have guessed correct. -->
