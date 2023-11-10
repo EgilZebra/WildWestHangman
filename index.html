@@ -23,7 +23,7 @@
     <audio id="sound-incorrect">
         <source src="./assets/wrong.mp3" type="audio/mpeg">
     </audio>
-
+    
     <div class="headline">
         <h1 class="headline__text">•HANGMAN•</h1>
     </div>
@@ -51,11 +51,11 @@
             </svg>
         </figure>
 
-        <figure class="sidefig--right">
+        <figure class="sidefig sidefig--right">
             <img src="assets/cactus.png" alt="cactus">
         </figure>
 
-        <figure class="sidefig--left">
+        <figure class="sidefig sidefig--left">
             <img src="assets/sheriffstar.png" alt="cactus">
         </figure>
         <div id="toss-container">
@@ -74,17 +74,31 @@
 
     <div class="input-container">
         <!-- Type the letter that you want to guess. -->
-        <button onclick="resetGame()">Reset</button>
-        <input id="hej" type="text" class="input-container__text" maxlength="1" onkeydown="handleEnter(event)" required
+        <button class="input-container__btn" onclick="resetGame()">Reset</button>
+        <input type="text" class="input-container__text" maxlength="1" onkeydown="handleEnter(event)" required
             autofocus>
         <!-- Run the function when you press this button. -->
         <button class="input-container__btn" onclick=(compareByInput())>Guess!</button>
     </div>
-    <div class="score-container">
-        <div id="score-container__counter">Score: 0</div>
-    </div>
-    <div class="timer-container">
-        <div id="timer-container__counter"></div>
+    <div class="bottom-wrapper">
+        <div class="bottom-wrapper--second">
+        <div class="score-container">
+            <div id="score-container__counter">Score: 0</div>
+        </div>
+        <div class="timer-container">
+            <div id="timer-container__counter"></div>
+        </div>
+        </div>
+        <!-- background sound when playing -->
+        <audio id="sound-bg" controls autoplay loop>
+            <source src="./assets/bg.mp3" type="audio/mp3">
+        </audio>
+        <audio id="sound-correct">
+            <source src="./assets/correct.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="sound-incorrect">
+            <source src="./assets/wrong.mp3" type="audio/mpeg">
+        </audio>
     </div>
     <script src="script.js"></script>
 </body>

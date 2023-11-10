@@ -45,3 +45,41 @@ JS
 
  3. Överkurs funktionalitet.
  	- 
+
+
+
+
+- Ta beslut om music play bar
+
+CSS -	X formatera hangman skylten
+ 	X formatera wandet poster
+	X formatera resetknapen
+	X formatera sore/timer rutan
+			- går inte att formatera musicplayer, måste göra helt ny spelare från grunden.
+		X läggg på rad med music player
+
+- Byt ut alert fönstret mot modal istället
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
