@@ -1,6 +1,6 @@
 const wordList = ["dog", "bear", "horse", "elephant"];
 let figureList = ["ground", "scaffold", "head", "body", "arms", "legs"];
-let secretWord, selectedWord;
+let secretWord, selectedWord, setTimer
 let figureCounter = 0;
 let score = 0;
 let count = 60;
@@ -21,20 +21,40 @@ const musicPlay = () => {
         }
     }
 }
-
 document.addEventListener('click', musicPlay);
 
+  // Gives a endgame popup, loose or win.
+  // Runs showToss() if condition is met
+    const gameEnd = () => {
+      if (figureCounter == 6) {
+        showToss(`You lost! The right word was "${selectedWord}" Do you want to try again?`)
+
+        } else if (secretWord.join('').toString() == selectedWord) {
+            showToss(`The correct word was: "${secretWord.join('').toString()}" <br/><br/> You won!`);
+        }
+    }
+
+    const showToss = (message) => { 
+        showMessage.innerHTML = message;
+        tossContainer.style.display = "block";
+    }
+
 // timer for the game 60 sec
-const timer = setInterval(function() {
-  const playerTime = document.getElementById("timer-container__counter");
+
+const timer = () => {
+clearInterval(setTimer)
+ setTimer = setInterval(function() {
+ const playerTime = document.getElementById("timer-container__counter");
   count--;
    playerTime.textContent = `Timer: ${count}`;  
   console.log(count);
-  if (count === 0) {
-    clearInterval(timer);
-    alert(`Time is up, restart the game`)
+  if (count == 0) {
+    clearInterval(setTimer);
+    showToss()
   }
 }, 1000);
+}
+timer()
 
 // randomize a word from secretWords-array
 const randomizedWord = () => {
@@ -54,10 +74,8 @@ hideWord();
 // checks if the entered value is valid.
   const compareByInput = () => {
   let guessInput = document.getElementsByClassName('input-container__text')[0];
-  
   let guessLetter = guessInput.value;
   if (!guessLetter.match(/[a-z]/)) {
-    
     guessInput.value = "";
     return null;
   } 
@@ -94,21 +112,7 @@ gainedScore()
     soundIncorrect.play();
   }
 
-  // Gives a endgame popup, loose or win.
-  // Runs showToss() if condition is met
-    const gameEnd = () => {
-      if (figureCounter == 6) {
-        showToss(`You lost! The right word was "${selectedWord}" Do you want to try again?`)
 
-        } else if (secretWord.join('').toString() == selectedWord) {
-            showToss(`The correct word was: "${secretWord.join('').toString()}" <br/><br/> You won!`);
-        }
-    }
-
-    const showToss = (message) => { 
-        showMessage.innerHTML = message;
-        tossContainer.style.display = "flex";
-    }
 // Delay timer for the picture to display before the game ends.
      setTimeout(() => {
        gameEnd();
@@ -127,15 +131,16 @@ const handleEnter = (event) => {
 
 //VERY SENSITIVE resetGame() is very "order-sensitive" 
 const resetGame = () => { 
-  /* secretWord = [];
-  selectedWord = []; */ //behövs dessa ens??
+  count = 60;
+  timer();
+  score = 0;
+  document.getElementById("score-container__counter").textContent = `Score: ${score}`; 
 
- document.getElementsByClassName("input-container__text")[0].value = "";
+
+  document.getElementsByClassName("input-container__text")[0].value = "";
   compareByInput(); //1 // 3
   randomizedWord(); //2
   hideWord(); //3
-  
-    count = 60;
   figureCounter = 0;
   
     tossContainer.style.display = "none";
@@ -146,5 +151,3 @@ for (let figure of figureList) {
   }
   document.getElementsByClassName("guess-container__incorrect")[0].innerHTML = "";
 }
-
-
