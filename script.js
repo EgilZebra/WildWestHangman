@@ -136,7 +136,8 @@ const resetGame = () => {
   randomizedWord(); //2
   hideWord(); //3
   
-  
+   score = 0;
+  gainedScore();
     count = 60;
   figureCounter = 0;
   
