@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* border: solid black; */
     text-transform: uppercase;
 }
 
 html {
     height: 100%;
+}
+#sound-bg {
+    background: none;
 }
 
 body {
@@ -22,9 +24,11 @@ body {
     font-size: 2rem;
     background-image: url(assets/wwbackground.png);
     background-repeat: no-repeat;
-    background-size: min(150rem);
+    background-size: auto;
     background-position: left;
 }
+
+/* #region Headline */
 
 .headline {
     background-image: url(assets/woodsign.webp);
@@ -42,6 +46,10 @@ body {
     margin: 1.5rem;
     letter-spacing: .5rem;
 }
+
+/* #endregion Headline */
+
+/* #region  Mainposter */
 
 .mainwrapper {
     background-image: url(assets/wantedposter.png);
@@ -77,6 +85,10 @@ body {
     height: 2.2rem;
     color: saddlebrown;
 }
+
+/* #endregion Mainposter*/
+
+/* #region Input-container*/
 
 .input-container {
     display: flex;
@@ -122,22 +134,9 @@ body {
     background-color: rgba(0, 0, 0, 0.455);
 }
 
-.sidefig {
-    width: 10rem;
-    height: 10rem;
-    position: fixed;
-}
+/* #endregion Input-container */
 
-.sidefig--right {
-    bottom: 30rem;
-    right: 5rem;
-}
-
-.sidefig--left {
-    bottom: 15rem;
-    left: -10rem;
-    rotate: 15deg;
-}
+/* #region Bottom-container */
 
 .bottom-wrapper {
     display: flex;
@@ -179,9 +178,30 @@ body {
     color: black;
 }
 
-#sound-bg {
-    background: none;
+/* #endregion Bottom-container*/
+
+/* #region Fixed sidefigure */
+
+.sidefig {
+    width: 10rem;
+    height: 10rem;
+    position: fixed;
 }
+
+.sidefig--right {
+    bottom: 30rem;
+    right: 5rem;
+}
+
+.sidefig--left {
+    bottom: 15rem;
+    left: -10rem;
+    rotate: 15deg;
+}
+
+/* #endregion Fixed sidefigure */
+
+/* #region responsive mediaquery */
 
 @media (max-width: 40rem) {
     .sidefig {
@@ -195,3 +215,5 @@ body {
         background-size: auto;
     }
 }
+
+/* #endregion responsive mediaquery*/
